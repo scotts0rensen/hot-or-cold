@@ -24,20 +24,22 @@ $(document).ready(function(){
   newGame();
 });
 
+function newGame() {
+  resetGuessCount();
+  generateAnswer();
+  setFeedback("Make your guess!");
+  resetGuessList();
+}
+
 function guessHandler(event) {
   event.preventDefault();
 
   incrementGuessCount();
   var guess = getGuess();
+  addGuessToList(guess);
   setFeedback( getFeedback(guess) );
 
   clearGuess();
-}
-
-function newGame() {
-  resetGuessCount();
-  generateAnswer();
-  setFeedback("Make your guess!");
 }
 
 function resetGuessCount() {
@@ -67,6 +69,15 @@ function clearGuess() {
 
 function getGuess() {
   return $("#userGuess").val();
+}
+
+function resetGuessList() {
+  $("#guessList").empty();
+}
+
+function addGuessToList(guess) {
+  var listItem = $("<li>" + guess + "</li>");
+  $("#guessList").append(listItem);
 }
 
 function getFeedback(guess) {
