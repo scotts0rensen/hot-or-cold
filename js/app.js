@@ -26,7 +26,11 @@ $(document).ready(function(){
 
 function guessHandler(event) {
   event.preventDefault();
+
   incrementGuessCount();
+  var guess = getGuess();
+  var feedback = getFeedback(guess);
+  alert(feedback);
 }
 
 function newGame() {
@@ -39,7 +43,7 @@ function resetGuessCount() {
 }
 
 function incrementGuessCount() {
-  setGuessCount(guessCount++);
+  setGuessCount(guessCount+1);
 }
 
 function setGuessCount(guessCnt) {
@@ -51,3 +55,21 @@ function generateAnswer() {
   answer = Math.floor((Math.random() * MAXIMUM_ANSWER) + 1);
 }
 
+function getGuess() {
+  return $("#userGuess").val();
+}
+
+function getFeedback(guess) {
+  var diff = Math.abs(guess-answer);
+  alert("answer: " + answer + ", diff: " + diff);
+  var feedback;
+  if (diff >= 50) feedback = "Ice Cold";
+  else if (diff >= 30) feedback = "Cold";
+  else if (diff >= 20) feedback = "Warm";
+  else if (diff >= 10) feedback = "Hot";
+  else if (diff >= 5) feedback = "Very Hot";
+  else if (diff >= 1) feedback = "Burning Up!";
+  else feedback = "Correct!";
+
+  return feedback;
+}
