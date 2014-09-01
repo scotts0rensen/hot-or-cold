@@ -1,4 +1,6 @@
 
+var guessCount = 0;
+
 $(document).ready(function(){
 
   /*--- Display information modal box ---*/
@@ -22,10 +24,20 @@ $(document).ready(function(){
 });
 
 function guessHandler(event) {
-  alert( "Handler for .submit() called." );
   event.preventDefault();
+  incrementGuessCount();
 }
 
 function newGame() {
-  alert( "Starting new game" );
+  resetGuessCount();
+}
+
+function resetGuessCount() {
+  guessCount = 0;
+  $("span#count").text(guessCount);
+}
+
+function incrementGuessCount() {
+  guessCount++;
+  $("span#count").text(guessCount);
 }
