@@ -35,16 +35,19 @@ function newGame() {
 }
 
 function resetGuessCount() {
-  guessCount = 0;
-  $("span#count").text(guessCount);
+  setGuessCount(0);
 }
 
 function incrementGuessCount() {
-  guessCount++;
+  setGuessCount(guessCount++);
+}
+
+function setGuessCount(guessCnt) {
+  guessCount = guessCnt;
   $("span#count").text(guessCount);
 }
 
 function generateAnswer() {
   answer = Math.floor((Math.random() * MAXIMUM_ANSWER) + 1);
-  alert("answer is " + answer);
 }
+
