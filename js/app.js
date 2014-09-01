@@ -83,6 +83,8 @@ function addGuessToList(guess) {
 function getFeedback(guess) {
   var feedback;
 
+  var high = guess > answer;
+
   var diff = Math.abs(guess-answer);
   if (diff >= 50) feedback = "Ice Cold";
   else if (diff >= 30) feedback = "Cold";
@@ -90,7 +92,10 @@ function getFeedback(guess) {
   else if (diff >= 10) feedback = "Hot";
   else if (diff >= 5) feedback = "Very Hot";
   else if (diff >= 1) feedback = "Burning Up!";
-  else feedback = "Correct!";
+  else feedback = "Correct! You win!";
+
+  if (diff > 0)
+    feedback += " (you are too " + (high ? "high" : "low") + ")";
 
   return feedback;
 }
