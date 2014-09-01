@@ -1,4 +1,5 @@
-
+var MAXIMUM_ANSWER = 100;
+var answer;
 var guessCount = 0;
 
 $(document).ready(function(){
@@ -30,6 +31,7 @@ function guessHandler(event) {
 
 function newGame() {
   resetGuessCount();
+  generateAnswer();
 }
 
 function resetGuessCount() {
@@ -40,4 +42,9 @@ function resetGuessCount() {
 function incrementGuessCount() {
   guessCount++;
   $("span#count").text(guessCount);
+}
+
+function generateAnswer() {
+  answer = Math.floor((Math.random() * MAXIMUM_ANSWER) + 1);
+  alert("answer is " + answer);
 }
