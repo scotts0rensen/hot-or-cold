@@ -90,7 +90,10 @@ function getFeedback(guess) {
   else if (diff >= 10) feedback = "Hot";
   else if (diff >= 5) feedback = "Very Hot";
   else if (diff >= 1) feedback = "Burning Up!";
-  else feedback = "Correct!";
+  else feedback = "Correct! You win!";
+
+  if (diff > 0)
+    feedback += " (you are too " + (guess > answer ? "high" : "low") + ")";
 
   return feedback;
 }
