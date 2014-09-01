@@ -30,6 +30,8 @@ function guessHandler(event) {
   incrementGuessCount();
   var guess = getGuess();
   setFeedback( getFeedback(guess) );
+
+  clearGuess();
 }
 
 function newGame() {
@@ -57,6 +59,10 @@ function setFeedback(feedback) {
 
 function generateAnswer() {
   answer = Math.floor((Math.random() * MAXIMUM_ANSWER) + 1);
+}
+
+function clearGuess() {
+  $("#userGuess").val("");
 }
 
 function getGuess() {
